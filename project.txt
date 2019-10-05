@@ -1,0 +1,38 @@
+Design:
+reuse typography / look for queues from clearbit
+spice up the buttons a la clearbit
+
+Graphics:
+- spice up the csv graphic
+- plug and play graphic
+    -> mention custom audience export to social platforms
+    - fb, linkend, intagram, twiter,
+- more colors in icons
+
+Interactive / Animated:
+- animated form, to email
+- single page content navigation
+- stripe style customer but <buy data!> grey + fuzz
+
+Integrations:
+drift / intercom integration
+
+editable copy is a nice to have
+
+
+
+
+hosting / platform:
+Gatsby / netlify
+for the best experience check your system configuration 
+where to buy the best wsasd best keypads 
+
+
+
+Todo: 
+- grab nathanpointer code as starting point
+- host on netlify
+- typography and buttons
+- find a nav system
+- form
+- drift integration
