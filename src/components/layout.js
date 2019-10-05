@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet"
 import { Link, graphql, useStaticQuery } from "gatsby"
 import { rhythm } from "../utils/typography";
 import { Container, Row, Col } from 'react-grid-system';
+import * as Scroll from 'react-scroll';
 
 export default ({ children }) => {
     const data = useStaticQuery(graphql`
@@ -40,11 +41,8 @@ const Header = () => (
                         <img class="logo" src="/logo.png" alt="datawhale.io"/>
                     </Link>
                 </Col>
-                <Col xs="content">
-                    <Link to="/blog">pricing</Link>
-                </Col>
-                <Col xs="content">
-                    <a href="mailto:nwpointer@gmail.com">contact</a>
+                <Col className="link" xs="content">
+                    <Scroll.Link to="test1" smooth='easeInOutQuart' duration={500}>Contact</Scroll.Link>
                 </Col>
             </Row>
         </Container>
