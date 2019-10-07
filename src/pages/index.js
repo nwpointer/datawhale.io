@@ -188,7 +188,7 @@ const ContactUs = () => {
         </div>
       </div>
       <h2 className="center">Success!</h2>
-      <p className="center">we'll contact you with more information soon.</p>
+      <p className="center">We'll contact you with more information soon.</p>
       <br />
       <br />
     </div>
