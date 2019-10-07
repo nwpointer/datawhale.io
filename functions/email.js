@@ -19,7 +19,7 @@ export function handler(event, context, callback) {
     transporter.sendMail({
         from: Email,
         to: process.env.SEND_TO,
-        subject: process.env.NODE_ENV + ' outreach email ' + new Date().toLocaleString(),
+        subject: (process.env.NODE_ENV || '') + ' outreach email ' + new Date().toLocaleString(),
         text: `
             from: ${Email}
             message: 
