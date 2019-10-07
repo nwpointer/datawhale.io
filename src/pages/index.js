@@ -172,7 +172,7 @@ const ContactUs = () => {
         <label className="fill" htmlFor="email">Email:</label>
         <input defaultValue={Email} onChange={update(setEmail)} className="fill" name="email" type="text" placeholder="email@mail.com"/>
         <label className="fill" htmlFor="message">Message:</label>
-        <textarea defaultValue={Message} onChange={update(setMessage)} className="fill" name="message" type="text" placeholder="what are you trying to accomplish with datawhale"/>
+        <textarea defaultValue={Message} onChange={update(setMessage)} className="fill" name="message" type="text" placeholder="what are you trying to accomplish with datawhale?"/>
         <button className="fill" onClick={send}>Request Demo</button>
       </div>
       <br className="sm-hide"/>
