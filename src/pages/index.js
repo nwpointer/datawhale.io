@@ -143,8 +143,8 @@ const SecondaryHero = ()=> {
 
 const ContactUs = () => {
   const [screen, setScreen] = useState(0);
-  const [Email, setEmail] = useState('nwpointer@gmail.com');
-  const [Message, setMessage] = useState('test 123');
+  const [Email, setEmail] = useState();
+  const [Message, setMessage] = useState();
   const update = setter => e => setter(e.target.value)
   const send = e => {
     const params = {Email, Message}
