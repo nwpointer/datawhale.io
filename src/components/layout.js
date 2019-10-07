@@ -4,6 +4,7 @@ import { Link, graphql, useStaticQuery } from "gatsby"
 import { rhythm } from "../utils/typography";
 import { Container, Row, Col } from 'react-grid-system';
 import * as Scroll from 'react-scroll';
+import Drift from 'react-driftjs'
 
 export default ({ children }) => {
     const data = useStaticQuery(graphql`
@@ -21,12 +22,14 @@ export default ({ children }) => {
                 <meta charSet="utf-8" />
                 <title>Datawhale.io</title>
                 <link rel="canonical" href="https://datawhale.io" />
+                <meta name='viewport' content='width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no, initial-scale=1' />
             </Helmet>
             <br />
             <Header />
             <br />
             {children}
             <Footer />
+            <Drift appId="mgykahhfn65n" />
         </div>
   )
 }
@@ -38,7 +41,7 @@ const Header = () => (
                 <Col>
                     <Link to="/">
                         {/* <div className="name">Datawhale.io</div> */}
-                        <img class="logo" src="/logo.png" alt="datawhale.io"/>
+                        <img className="logo" src="/logo.png" alt="datawhale.io"/>
                     </Link>
                 </Col>
                 <Col className="link" xs="content">

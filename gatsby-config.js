@@ -11,10 +11,11 @@ module.exports = {
   },
   plugins: [
     {
-        resolve: `gatsby-plugin-s3`,
-        options: {
-            bucketName: 'datawhale.io'
-        },
+      resolve: `gatsby-plugin-netlify-functions`,
+      options: {
+        functionsSrc: `${__dirname}/functions`,
+        functionsOutput: `${__dirname}/.netlify/functions`,
+      }
     },
     {
       resolve: `gatsby-plugin-typography`,

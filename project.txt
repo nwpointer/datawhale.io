@@ -29,5 +29,4 @@ where to buy the best wsasd best keypads
 
 Todo: 
 - form
-- drift integration
 - mobile optimization
