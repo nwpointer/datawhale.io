@@ -137,6 +137,46 @@ const SecondaryHero = ()=> {
           <p>A dataset of resume, contact, social, and demographic information on 1.5 Billion unique individuals, delivered to you at the scale you need it. Over 1 Billion personal email addresses, 420 Million LinkedIn URLs, 1 Billion Facebook URLs/IDs, and much more.</p>
         </div>
       </div>
+      <Row>
+        <Col className="datapoints">
+        <div style={{display:'flex', alignItems:'center', justifyContent:'center', height:'100%'}}>
+          <div style={{display:'flex', position:'relative', height:'300px', width:'300px', alignItems:'center', justifyContent:'center', height:'100%'}}>
+            <div style={{position:'absolute'}}className="empty-circle"></div>
+            <img style={{position:'absolute', width:'40px'}} src="./logoicon.png" alt=""/>
+            <div style={{position:'absolute', transform:'scale(0.9)', opacity: 0.4}}className="empty-circle"></div>
+
+            <div className="nspin" style={{position:'absolute', width:'300px', height:'300px'}}>
+              <div className="circle spin growable invert z1 sm" style={{right:'-70px'}}>
+                <div className="spin"><i className="icon icofont-linkedin"></i></div>
+              </div>
+              <div className="circle growable invert z1 sm" style={{top:'50px'}}>
+                <div className="spin"><i className="icon icofont-at"></i></div>
+              </div>
+              <div className="circle growable invert z1 sm" style={{top:'210px',right:'-90px'}}>
+                <div className="spin"><i className="icon icofont-ui-user"></i></div>
+              </div>
+              <div className="circle growable invert z1 sm" style={{top:'100px',right:'-270px'}}>
+                <div className="spin"><i className="icon icofont-facebook"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </Col>
+        <Col>
+          <div>
+            <br/> <br/>
+            <p>
+              <ul>
+                <li>Over <b>1.5 Billion</b> unique people, <br/><small>including close to 260 million in the US.</small></li>
+                <li>Over <b>1 billion</b> personal email addresses. <br/><small>Work email for 70%+ decision makers in the US, UK, and Canada.</small></li>
+                <li>Over <b>420 million</b> linkedin urls</li>
+                <li>Over <b>1 billion</b> facebook urls and ids.</li>
+                <li><b>400 million+</b> phone numbers. <br/> <small>200 million+ US-based valid cell phone numbers.</small></li>
+              </ul>
+            </p>
+          </div>
+        </Col>
+      </Row>
     </div>
   )
 }
@@ -144,11 +184,11 @@ const SecondaryHero = ()=> {
 const ContactUs = () => {
   const [screen, setScreen] = useState(0);
   const [Email, setEmail] = useState();
+  const [Name, setName] = useState();
   const [Message, setMessage] = useState();
   const update = setter => e => setter(e.target.value)
   const send = e => {
-    const params = {Email, Message}
-    axios.get(`/.netlify/functions/email`, {params})
+    axios.get(`/.netlify/functions/email`, {Email, Message, Name})
       .then(({status})=>{
         console.log(status)
         if(status === 200){
@@ -170,9 +210,11 @@ const ContactUs = () => {
       <br className="sm-hide"/>
       <div>
         <label className="fill" htmlFor="email">Email:</label>
-        <input defaultValue={Email} onChange={update(setEmail)} className="fill" name="email" type="text" placeholder="email@mail.com"/>
+        <input defaultValue={Email} onChange={update(setEmail)} className="fill" name="email" type="text" placeholder="you@company.com"/>
+        <label className="fill" htmlFor="email">Name:</label>
+        <input defaultValue={Name} onChange={update(setName)} className="fill" name="name" type="text" placeholder="first last"/>
         <label className="fill" htmlFor="message">Message:</label>
-        <textarea defaultValue={Message} onChange={update(setMessage)} className="fill" name="message" type="text" placeholder="what are you trying to accomplish with datawhale?"/>
+        <textarea defaultValue={Message} onChange={update(setMessage)} className="fill" name="message" type="text" placeholder="What are you trying to accomplish with Datawhale?"/>
         <button className="fill" onClick={send}>Request Demo</button>
       </div>
       <br className="sm-hide"/>

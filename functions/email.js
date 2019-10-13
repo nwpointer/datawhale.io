@@ -6,6 +6,7 @@ var nodemailer = require('nodemailer');
 
 export function handler(event, context, callback) {
     const Email = get(event, 'queryStringParameters.Email')
+    const Email = get(event, 'queryStringParameters.Name')
     const Message = get(event, 'queryStringParameters.Message')
 
     var transporter = nodemailer.createTransport({
@@ -22,6 +23,7 @@ export function handler(event, context, callback) {
         subject: (process.env.NODE_ENV || '') + ' outreach email ' + new Date().toLocaleString(),
         text: `
             from: ${Email}
+            name: ${Name}
             message: 
             ${Message}
         `
