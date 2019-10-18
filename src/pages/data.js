@@ -1,6 +1,7 @@
 import React from "react"
 import Layout from "../components/layout"
 import { Container } from 'react-grid-system';
+import ContactUs from "../components/contact"
 
 const SocialNetworks = () => (
   <div>
@@ -2434,6 +2435,7 @@ export default ({data}) => {
         <Countries/>
         <br /><br /><br />
       </Container>
+      <ContactUs />
     </Layout>
   )
 }
