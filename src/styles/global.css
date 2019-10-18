@@ -196,11 +196,16 @@ footer{
   height: 2em;
   position: relative;
   text-align: center;
-  line-height: 2.1em ;
+  line-height: 2em ;
 }
 
 .circle.sm .icon{
-  font-size: 1.225em;
+  font-size: 1em;
+}
+
+.colorize{
+  filter: invert(53%) sepia(77%) saturate(315%) hue-rotate(158deg) brightness(93%) contrast(98%);
+  opacity: 0.3;
 }
 
 .empty-circle{
@@ -425,6 +430,9 @@ td:first-child, th:first-child {
   outline: none;
   display: block;
 } */
+button.secondary{
+  background-color: #5286d3;
+}
 
 Button {
 	background-color: #422db1;

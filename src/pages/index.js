@@ -16,14 +16,15 @@ const Hero = (screenClass)=>{
     <Row className="hero" style={{ paddingTop: rhythm(padding[screenClass]), paddingBottom: rhythm(padding[screenClass]+2)}}>
       <Col lg={6}>
         <h1 style={{maxWidth: headingWidth[screenClass], ...scale(headingScale[screenClass])}}>
-          <b>Powerful data to reach everyone in your target market</b>
+          <b>Customer intelligence drives radically better business</b>
         </h1>
         <h2 style={{...scale(subheadingScale[screenClass])}}>
-        <p>Datawhale builds custom datasets containing key information on customers in your target market. </p>
+        <p>Unlock innovation with the most accurate work, contact, and social data on every person in your target market.</p>
         </h2>
         <Scroll.Link to="test1" smooth='easeInOutQuart' duration={500}>
           <button className="excitable z1"><b>BUY DATA</b></button>
         </Scroll.Link>
+        <button style={{marginLeft:'1em'}} className="excitable z1 secondary"><b>PREVIEW DATASET</b></button>
       </Col>
       <Col lg={6} style={{display: 'flex', 'justifyContent': 'center', alignItems: 'center'}}>
         <div className="dark" style={{display: 'flex', paddingTop: rhythm(screenClass == 'xs' || screenClass == 'sm' ? 2: 1)}}>
@@ -134,25 +135,27 @@ const SecondaryHero = ()=> {
       <div className="horizontalCenter textCenter">
         <div>
           <h1 className="thin">Data Points</h1>
-          <p>A dataset of resume, contact, social, and demographic information on 1.5 Billion unique individuals, delivered to you at the scale you need it. Over 1 Billion personal email addresses, 420 Million LinkedIn URLs, 1 Billion Facebook URLs/IDs, and much more.</p>
+          <p>Trusted information on 1.5 Billion consumers to deeply understand your customers and drive every single marketing and sales interaction.</p>
+          <br/>
         </div>
       </div>
       <Row>
-        <Col className="datapoints">
-        <div style={{display:'flex', alignItems:'center', justifyContent:'center', height:'100%'}}>
+        <Col md={6} className="datapoints">
+        <div style={{display:'flex', alignItems:'center', justifyContent:'center', height:'100%', minHeight:'350px'}}>
           <div style={{display:'flex', position:'relative', height:'300px', width:'300px', alignItems:'center', justifyContent:'center', height:'100%'}}>
             <div style={{position:'absolute'}}className="empty-circle"></div>
+            <img className="colorize" style={{position:'absolute', width:'200px'}} src="./halftone.png" alt=""/>
             <img style={{position:'absolute', width:'40px'}} src="./logoicon.png" alt=""/>
-            <div style={{position:'absolute', transform:'scale(0.9)', opacity: 0.4}}className="empty-circle"></div>
-
+            <div style={{position:'absolute', transform:'scale(0.97)', opacity: 0.4}}className="empty-circle"></div>
+            <div style={{position:'absolute', transform:'scale(0.94)', opacity: 0.2}}className="empty-circle"></div>
             <div className="nspin" style={{position:'absolute', width:'300px', height:'300px'}}>
-              <div className="circle spin growable invert z1 sm" style={{right:'-70px'}}>
+              <div className="circle spin growable blue invert z1 sm" style={{right:'-70px'}}>
                 <div className="spin"><i className="icon icofont-linkedin"></i></div>
               </div>
               <div className="circle growable invert z1 sm" style={{top:'50px'}}>
                 <div className="spin"><i className="icon icofont-at"></i></div>
               </div>
-              <div className="circle growable invert z1 sm" style={{top:'210px',right:'-90px'}}>
+              <div className="circle growable blue invert z1 sm" style={{top:'210px',right:'-90px'}}>
                 <div className="spin"><i className="icon icofont-ui-user"></i></div>
               </div>
               <div className="circle growable invert z1 sm" style={{top:'100px',right:'-270px'}}>
@@ -162,9 +165,9 @@ const SecondaryHero = ()=> {
           </div>
         </div>
         </Col>
-        <Col>
+        <Col md={6}>
           <div>
-            <br/> <br/>
+            <br/>
             <p>
               <ul>
                 <li>Over <b>1.5 Billion</b> unique people, <br/><small>including close to 260 million in the US.</small></li>
@@ -173,6 +176,7 @@ const SecondaryHero = ()=> {
                 <li>Over <b>1 billion</b> facebook urls and ids.</li>
                 <li><b>400 million+</b> phone numbers. <br/> <small>200 million+ US-based valid cell phone numbers.</small></li>
               </ul>
+              <a>Preview dataset</a>
             </p>
           </div>
         </Col>
