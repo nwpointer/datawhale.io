@@ -4,13 +4,15 @@ import { Container } from 'react-grid-system';
 
 const SocialNetworks = () => (
   <div>
-    <h1>Social Networks</h1>
-    <table>
+    <br/>
+    <h2>Social Networks</h2>
+    <div className="r1 b1">
+    <table className="data-set data bkg-white">
     <thead>
       <tr>
-      <th>Value</th>
-      <th>Count</th>
-      <th>Numeric</th>
+        <th className="xl darken pl-1">Value</th>
+        <th className="xl darken pl-1">Count</th>
+        <th className="xl darken pl-1">Numeric</th>
       </tr>
     </thead>
     <tbody>
@@ -156,19 +158,22 @@ const SocialNetworks = () => (
       </tr>
     </tbody>
     </table>
+    </div>
   </div>
 )
 
 const Coverage = () => (
   <div>
-    <h1>Coverage</h1>
-    <table>
+    <br/>
+    <h2>Coverage</h2>
+    <div className="r1 b1">
+    <table className="data-set data bkg-white">
     <thead>
     <tr>
-    <th>Field</th>
-    <th>Count</th>
-    <th>Numeric</th>
-    <th>License Only</th>
+    <th className="xl darken pl-1">Field</th>
+    <th className="xl darken pl-1">Count</th>
+    <th className="xl darken pl-1">Numeric</th>
+    <th className="xl darken pl-1">License Only</th>
     </tr>
     </thead>
     <tbody>
@@ -1140,18 +1145,21 @@ const Coverage = () => (
     </tr>
     </tbody>
     </table>
+    </div>
   </div>
 )
 
 const Countries = ()=>(
   <div>
-    <h1>Countries</h1>
-    <table>
+    <br/>
+    <h2>Countries</h2>
+    <div className="r1 b1">
+    <table className="data-set data">
     <thead>
       <tr>
-      <th>Value</th>
-      <th>Count</th>
-      <th>Numeric</th>
+      <th className="xl darken pl-1">Value</th>
+      <th className="xl darken pl-1">Count</th>
+      <th className="xl darken pl-1">Numeric</th>
       </tr>
     </thead>
     <tbody>
@@ -2412,6 +2420,7 @@ const Countries = ()=>(
     </tr>
     </tbody>
     </table>
+    </div>
   </div>
 )
 
@@ -2423,6 +2432,7 @@ export default ({data}) => {
         <SocialNetworks />
         <Coverage/>
         <Countries/>
+        <br /><br /><br />
       </Container>
     </Layout>
   )
