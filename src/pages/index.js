@@ -24,7 +24,9 @@ const Hero = (screenClass)=>{
         <Scroll.Link to="test1" smooth='easeInOutQuart' duration={500}>
           <button className="excitable z1"><b>BUY DATA</b></button>
         </Scroll.Link>
-        <button style={{marginLeft:'1em'}} className="excitable z1 secondary"><b>PREVIEW DATASET</b></button>
+        <Link to="/data" activeClassName="active">
+          <button style={{marginLeft:'1em'}} className="excitable z1 secondary"><b>PREVIEW DATASET</b></button>
+        </Link>
       </Col>
       <Col lg={6} style={{display: 'flex', 'justifyContent': 'center', alignItems: 'center'}}>
         <div className="dark" style={{display: 'flex', paddingTop: rhythm(screenClass == 'xs' || screenClass == 'sm' ? 2: 1)}}>
@@ -92,14 +94,14 @@ const Services = ()=>{
         <div className="circle growable invert z1 md">
           <i className="icon icofont-paper-plane"></i>
         </div>
-        <h3>Marketing Datasets</h3>
+        <h3>Datasets for marketers</h3>
         <p>Reach your entire target audience and build campaigns that generate better results.</p>
       </Col>
       <Col className="growable" md={6}>
         <div className="circle growable invert z1 md blue">
           <i className="icon icofont-binoculars"></i>
         </div>
-        <h3>Sales Datasets</h3>
+        <h3>Datasets for sales</h3>
         <p>Discover valuable information on future prospects and personalize every interaction.</p>
       </Col>
     </Row>
@@ -176,7 +178,9 @@ const SecondaryHero = ()=> {
                 <li>Over <b>1 billion</b> facebook urls and ids.</li>
                 <li><b>400 million+</b> phone numbers. <br/> <small>200 million+ US-based valid cell phone numbers.</small></li>
               </ul>
-              <a>Preview dataset</a>
+              <Link to="/data" activeClassName="active">
+                <a style={{paddingLeft:'1em'}}>Preview dataset</a>
+              </Link>
             </p>
           </div>
         </Col>
