@@ -14,8 +14,18 @@ var {
 var nodemailer = require('nodemailer');
 
 function handler(event, context, callback) {
+  console.log({
+    event,
+    context
+  });
   const Email = get(event, 'queryStringParameters.Email');
+  const Name = get(event, 'queryStringParameters.Name');
   const Message = get(event, 'queryStringParameters.Message');
+  console.log({
+    Email,
+    Name,
+    Message
+  });
   var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -26,9 +36,10 @@ function handler(event, context, callback) {
   transporter.sendMail({
     from: Email,
     to: process.env.SEND_TO,
-    subject: process.env.NODE_ENV + ' outreach email ' + new Date().toLocaleString(),
+    subject: (process.env.NODE_ENV || '') + ' outreach email ' + new Date().toLocaleString(),
     text: `
             from: ${Email}
+            name: ${Name}
             message: 
             ${Message}
         `

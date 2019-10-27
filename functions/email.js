@@ -5,9 +5,11 @@ var {get} = require('lodash');
 var nodemailer = require('nodemailer');
 
 export function handler(event, context, callback) {
+    console.log({event, context})
     const Email = get(event, 'queryStringParameters.Email')
     const Name = get(event, 'queryStringParameters.Name')
     const Message = get(event, 'queryStringParameters.Message')
+    console.log({Email, Name, Message})
 
     var transporter = nodemailer.createTransport({
         service: 'gmail',

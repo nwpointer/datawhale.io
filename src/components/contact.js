@@ -11,7 +11,7 @@ export default () => {
     const [Message, setMessage] = useState();
     const update = setter => e => setter(e.target.value)
     const send = e => {
-      axios.get(`/.netlify/functions/email`, {Email, Message, Name})
+      axios.get(`/.netlify/functions/email?Email=${Email}&Name=${Name}&Message=${Message}`)
         .then(({status})=>{
           console.log(status)
           if(status === 200){
@@ -21,7 +21,6 @@ export default () => {
           }
         })
         .catch(console.log)
-      console.log({Email,Message})
     }
     const Form = () => (
       <div className="formCard">
