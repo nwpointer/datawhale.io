@@ -1,18 +1,46 @@
 import React, { useState } from "react"
 import { Container, Row, Col } from 'react-grid-system';
 import * as Scroll from 'react-scroll';
+import * as EmailValidator from 'email-validator';
 import axios from 'axios'
 
 
 export default () => {
     const [screen, setScreen] = useState(0);
-    const [Email, setEmail] = useState();
-    const [Name, setName] = useState();
-    const [Message, setMessage] = useState();
-    const update = setter => e => setter(e.target.value)
+    const [sending, setSending] = useState(false);
+    const [Email, setEmail] = useState({value:'', valid: false});
+    const [Name, setName] = useState({value:'', valid: false});
+    const [Message, setMessage] = useState({value:'', valid: false});
+    
+    const [validation, setValidation] = useState({
+      validating: false,
+      error: ''
+    });
+    const validationStyles = field => validation.validating && !field.valid ? 'invalid' : ''
+    const anyValidationErrors = !Email.valid || !Name.valid || !Message.valid
+    const notValidEmail = !EmailValidator.validate(Email.value)
+    
+    const update = setter => e => {
+      setSending(false)
+      setter({
+        value: e.target.value,
+        valid: e.target.value.length > 0
+      })
+    }
     const send = e => {
-      axios.get(`/.netlify/functions/email?Email=${Email}&Name=${Name}&Message=${Message}`)
+      if(anyValidationErrors) {
+        setValidation({validating: true, error:'(all fields are required)'});
+        return
+      }
+      if(notValidEmail) {
+        setEmail({...Email, valid: false})
+        setValidation({validating: true, error:'please enter a valid email'});
+        return
+      }
+      setSending(true)
+      axios.get(`/.netlify/functions/email?Email=${Email.value}&Name=${Name.value}&Message=${Message.value}`)
         .then(({status})=>{
+          setSending(false)
           console.log(status)
           if(status === 200){
             setScreen(1)
@@ -20,10 +48,18 @@ export default () => {
             setScreen(2)
           }
         })
-        .catch(console.log)
+        .catch((error)=>{
+          setSending(false)
+          setScreen(2)
+          console.log(error)
+        })
+      setValidation({validating: false, error: ''});
     }
     const Form = () => (
       <div className="formCard">
+        {
+          console.log()
+        }
         <br className="sm-hide"/>
         <div className="horizontalCenter sm-hide">
           <div className="circle emoji growable invert sm-hide">🚀</div> 
@@ -32,12 +68,22 @@ export default () => {
         <br className="sm-hide"/>
         <div>
           <label className="fill" htmlFor="email">Email:</label>
-          <input defaultValue={Email} onChange={update(setEmail)} className="fill" name="email" type="text" placeholder="you@company.com"/>
-          <label className="fill" htmlFor="email">Name:</label>
-          <input defaultValue={Name} onChange={update(setName)} className="fill" name="name" type="text" placeholder="first last"/>
+          <input defaultValue={Email.value} onChange={update(setEmail)} className={`fill ${validationStyles(Email)}`} name="email" type="text" placeholder="you@company.com"/>
+          <label className="fill" htmlFor="name">Name:</label>
+          <input defaultValue={Name.value} onChange={update(setName)} className={`fill ${validationStyles(Name)}`} name="name" type="text" placeholder="first last"/>
           <label className="fill" htmlFor="message">Message:</label>
-          <textarea defaultValue={Message} onChange={update(setMessage)} className="fill" name="message" type="text" placeholder="What are you trying to accomplish with Datawhale?"/>
-          <button className="fill" onClick={send}>Request Demo</button>
+          <textarea defaultValue={Message.value} onChange={update(setMessage)} className={`fill ${validationStyles(Message)}`} name="message" type="text" placeholder="What are you trying to accomplish with Datawhale?"/>
+          <button className="fill" onClick={send}>
+          {
+            sending 
+            ? <div class="loader">Loading...</div>
+            : 'Request Demo'
+          }
+          </button>
+          {
+            validation.validating &&
+            <span className="fill validityNotice">{validation.error}</span>
+          }
         </div>
         <br className="sm-hide"/>
       </div>
