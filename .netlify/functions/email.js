@@ -5,13 +5,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.handler = handler;
 
-// import {get} from 'lodash'
-// import nodemailer from 'nodemailer';
 var {
   get
 } = require('lodash');
 
-var nodemailer = require('nodemailer');
+const sgMail = require('@sendgrid/mail');
 
 function handler(event, context, callback) {
   console.log({
@@ -26,31 +24,24 @@ function handler(event, context, callback) {
     Name,
     Message
   });
-  var transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: process.env.BOT_EMAIL,
-      pass: process.env.BOT_PASSWORD
-    }
-  });
-  transporter.sendMail({
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+  const msg = {
+    to: 'datawhalesite@gmail.com',
     from: Email,
-    to: process.env.SEND_TO,
     subject: (process.env.NODE_ENV || '') + ' outreach email ' + new Date().toLocaleString(),
     text: `
-            from: ${Email}
-            name: ${Name}
-            message: 
-            ${Message}
+from: ${Email}
+name: ${Name}
+message: 
+${Message}
         `
-  }, function (error, info) {
-    if (error) {
-      callback(error);
-    } else {
-      callback(null, {
-        statusCode: 200,
-        body: "Ok"
-      });
-    }
+  };
+  sgMail.send(msg).then(() => {
+    callback(null, {
+      statusCode: 200,
+      body: "Ok"
+    });
+  }).catch(error => {
+    callback(error);
   });
 }
